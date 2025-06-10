@@ -1,4 +1,4 @@
-# To-Do List for Code Lock Hackathon/Ideathon (SDG 8 and 12)
+# To-Do List for Techno (SDG 8 and 12)
 
 ## General Preparation
 - [ ] Define project goals aligned with SDG 8 (Decent Work and Economic Growth), SDG 10 (Reduced Inequalities), and SDG 11 (Sustainable Cities and Communities).
