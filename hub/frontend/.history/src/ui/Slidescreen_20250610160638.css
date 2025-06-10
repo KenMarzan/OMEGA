@@ -1,0 +1,57 @@
+html, body, #__next { 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
+.slide-screen {
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    overflow: hidden; 
+    top: 0;
+    left:0;
+}
+.welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    text-align: center;
+    pointer-events: none; /* Allows clicks to pass through to elements behind if needed */
+
+    /* Enhancing message visibility */
+    font-size: 3.5rem; /* Larger font size for prominence */
+    font-weight: 700; /* Bolder text */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger text shadow for contrast */
+
+    /* Shaped container for the message */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    padding: 2.5rem 4rem; /* Generous padding inside the container */
+    border-radius: 2rem; /* More rounded corners for a distinct shape */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8); /* Pronounced shadow for depth */
+    backdrop-filter: blur(8px); /* Blurs the background behind the container */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+
+    /* Responsive adjustments */
+    max-width: 90%; /* Ensure it doesn't overflow on small screens */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 1s ease-in-out;
+    will-change: transform; 
+}
+
+.slide-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    flex-shrink: 0;
+}

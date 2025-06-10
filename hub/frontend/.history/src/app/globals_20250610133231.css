@@ -1,0 +1,43 @@
+:root {
+  --color-earth-brown: #8B4513;
+  --color-fresh-green: #228B22;
+  --color-golden-yellow: #FFD700;
+  --color-sky-blue: #87CEEB;
+  --color-rust-red: #B22222;
+  --color-cream-white: #FFFDD0;
+  --color-dark-green: #006400;
+  --color-soft-beige: #F5F5DC;
+}
+
+body {
+  background-color: var(--color-soft-beige);
+  color: var(--color-earth-brown);
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: var(--color-fresh-green);
+  color: var(--color-cream-white);
+}
+
+.button {
+  background-color: var(--color-golden-yellow);
+  color: var(--color-earth-brown);
+  border: 2px solid var(--color-earth-brown);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: var(--color-rust-red);
+  color: var(--color-cream-white);
+}
+
+.footer {
+  background-color: var(--color-dark-green);
+  color: var(--color-cream-white);
+}
+
+h1, h2, h3 {
+  color: var(--color-sky-blue);
+}

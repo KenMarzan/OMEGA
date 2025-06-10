@@ -1,0 +1,39 @@
+html, body, #__next {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* This is good for full-screen prevention of scrollbars */
+}
+
+.slide-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden; /* Good for containing slides and preventing scrollbars within the screen */
+    background-color: #000; /* Ensures black background if images don't load or before load */
+}
+
+.welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    text-align: center;
+    pointer-events: none; /* Good, prevents message from interfering with interactions */
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+    will-change: transform;
+}
+
+.slide-image {
+    width: 100vw; /* Takes up full viewport width */
+    height: 100vh; /* Takes up full viewport height */
+    object-fit: cover; /* Important: Ensures image covers the element without distorting aspect ratio */
+    flex-shrink: 0; /* Prevents images from shrinking */
+}

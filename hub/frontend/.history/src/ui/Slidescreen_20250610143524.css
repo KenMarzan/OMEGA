@@ -1,0 +1,51 @@
+/* welcome.css */
+
+/* Ensure HTML and body take full height */
+html, body, #__next, #root { /* #__next for Next.js, #root for Create React App */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling if elements temporarily overflow */
+}
+
+.slide-screen {
+    /* Make the container full screen */
+    width: 100vw;   /* Viewport Width */
+    height: 100vh;  /* Viewport Height */
+    position: relative; /* Needed for absolute positioning of welcome-message */
+    overflow: hidden; /* Hide parts of images not currently in view */
+    background-color: #000; /* Fallback/background color for the screen */
+}
+
+.welcome-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensure it's above the images */
+    color: white;
+    text-align: center;
+    /* Optional: Add a background or subtle effect to make text readable over images */
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* padding: 20px; */
+    /* border-radius: 10px; */
+}
+
+.slides {
+    display: flex; /* Arrange images in a row */
+    height: 100%; /* Take full height of .slide-screen */
+    /* The transition property for the sliding effect */
+    transition: transform 1s ease-in-out; /* 1 second duration, ease-in-out timing */
+    /* Ensure hardware acceleration for smoother animations */
+    will-change: transform; 
+}
+
+.slide-image {
+    /* Each image should take up 100% of the viewport width */
+    width: 100vw;
+    height: 100vh;
+    /* Maintain aspect ratio and cover the entire space */
+    object-fit: cover; 
+    /* Prevent shrinking/growing due to flexbox default behavior */
+    flex-shrink: 0; 
+}
