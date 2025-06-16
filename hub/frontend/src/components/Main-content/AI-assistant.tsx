@@ -78,8 +78,10 @@ export default function AI_assistant(): React.JSX.Element {
               <p className="font-bold">Cheap and affordable</p>
             </div>
 
-            <div className="w-20 h-20 bg-white shadow-md rounded-full p-4 absolute top-8/12 right-32">
-              <img src="/arrow.png" alt="" />
+            <div className="w-20 h-20 bg-white shadow-md rounded-full p-4 absolute top-8/12 right-32 m-auto">
+              <h1>
+                <i className="bi bi-telephone-forward-fill">P</i>
+              </h1>
             </div>
 
             <div className="w-80 h-0 mt-[-100px] rounded-2xl p-4 absolute top-0  rotate-0 ">
