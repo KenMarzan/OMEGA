@@ -4,7 +4,7 @@ import Learning_hub from "./Main-content/Learning-hub";
 
 export default function Main(): React.JSX.Element {
   return (
-    <div id="Main-content">
+    <div>
       <AI_assistant />
       <Market_analysis />
       <Learning_hub />
