@@ -1,7 +1,3 @@
-export default function News(){
-    return(
-    <div>
-        safsa
-    </div>
-    );
+export default function News() {
+  return <div>safsa</div>;
 }
