@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from config import config_by_name
 import os
 import logging
-from modules.users.user_routes import user_bp # Import your blueprint
+from modules.users.user_routes import user_bp 
 
 def create_app(config_name=None):
     if config_name is None:
