@@ -30,7 +30,15 @@ const cardData = [
   },
 ];
 
-function Card({ imageSrc, title, location, origin, price }) {
+interface CardProps {
+  imageSrc: string;
+  title: string;
+  location: string;
+  origin: string;
+  price: string;
+}
+
+function Card({ imageSrc, title, location, origin, price }: CardProps) {
   return (
     <div className="w-56 shadow-md h-64 flex flex-col rounded-lg overflow-hidden border border-gray-200">
       <img src={imageSrc} alt={title} className="w-full h-1/2 object-cover" />
