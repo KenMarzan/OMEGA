@@ -18,15 +18,15 @@ def get_user(user_id):
 def register_user():
     data = request.json
     username = data.get('username')
-    password = data.get('password')
-    role = data.get('role', 'customer') 
+    password = data.get('password') # In real app, hash this!
+    role = data.get('role', 'customer') # Default role
 
     if not username or not password:
         return jsonify({"error": "Username and password are required"}), 400
     if get_user_by_username(username):
         return jsonify({"error": "Username already exists"}), 409
 
-    new_user = add_user(username, password, role) 
+    new_user = add_user(username, password, role) # password_hash is just password for prototype
     return jsonify({"message": "User registered successfully", "user": new_user}), 201
 
 @users_bp.route('/login', methods=['POST'])
@@ -36,6 +36,6 @@ def login_user():
     password = data.get('password')
 
     user = get_user_by_username(username)
-    if user and user['password_hash'] == password:
+    if user and user['password_hash'] == password: # Super simple check for prototype
         return jsonify({"message": "Login successful", "user_id": user['id'], "role": user['role']})
     return jsonify({"error": "Invalid credentials"}), 401
