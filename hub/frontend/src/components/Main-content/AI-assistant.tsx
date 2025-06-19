@@ -1,37 +1,15 @@
-import { KeyboardEventHandler, MouseEventHandler, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MouseEventHandler } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 export default function AI_assistant(): React.JSX.Element {
-  const enter: KeyboardEventHandler = (
-    event: React.KeyboardEvent<HTMLTextAreaElement>
-  ) => {
-    if (event.key == "Enter") {
-      if (!event.shiftKey) {
-        event.preventDefault();
-        console.log("Enter is working");
-        const ai = document.getElementById(
-          "prompt"
-        ) as HTMLTextAreaElement | null;
-        const form = document.getElementById(
-          "prompt-box"
-        ) as HTMLFormElement | null;
-        if (ai && form) {
-          const temp: string = ai.style.backgroundColor;
-          ai.style.backgroundColor = "green";
-          form.style.transform = "translate()";
-          setTimeout(() => {
-            ai.style.backgroundColor = temp;
-          }, 1000);
-        }
-      }
-    }
-  };
-  const click: MouseEventHandler = (
+  const tutorial: MouseEventHandler = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    if (event.currentTarget) {
-      console.log("Clickity");
+    if (event.currentTarget && event.currentTarget.id === "tutorial") {
+      console.log("Clickity1");
+    }
+    else if (event.currentTarget && event.currentTarget.id === "watch") {
+      console.log("Clickity2");
     }
   };
 
@@ -58,11 +36,11 @@ export default function AI_assistant(): React.JSX.Element {
             </div>
 
             <div className=" flex gap-20 items-center">
-              <button className="w-36 h-10 p-1  rounded-3xl bg-[#008000] shadow-md">
+              <button className="w-36 h-10 p-1  rounded-3xl bg-[#008000] shadow-md" id = "watch" onClick={tutorial}>
                 <h1 className="text-white ">Try our Ai</h1>
               </button>
               <div>
-                <button>Watch the tutorial</button>
+                <button id="tutorial" onClick={tutorial}>Watch the tutorial</button>
               </div>
             </div>
           </div>
