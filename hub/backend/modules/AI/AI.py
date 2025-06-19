@@ -7,9 +7,7 @@ API_KEY = "AIzaSyBmcG287aHq7zOKJSxdeh_MWhV9I4WNzTU"
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
 def index():
     user_input = ""
     gemini_response = "What's Up Anigrow"

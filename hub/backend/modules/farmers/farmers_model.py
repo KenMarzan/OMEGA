@@ -1,6 +1,7 @@
 FARMERS_DB = [
     {"id": 1, "user_id": 2, "farm_name": "Green Acres Farm", "location": "Sariaya, Quezon"},
 ]
+
 next_farmer_id = len(FARMERS_DB) + 1
 
 def get_farmers():
