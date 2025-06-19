@@ -1,27 +1,25 @@
-import os
-import psycopg2
-from psycopg2 import pool
+from flask import g, blueprints
+import sqlite3
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost:5432/mydatabase")
+database_bp = blueprints.Blueprint('database', __name__)
 
-try:
-    connection_pool = psycopg2.pool.SimpleConnectionPool(
-        1, 10, dsn=DATABASE_URL
-    )
-except Exception as e:
-    print(f"Error creating connection pool: {e}")
-    connection_pool = None
+DATABASE = 'database.db'
 
-def get_connection():
-    if connection_pool:
-        return connection_pool.getconn()
-    else:
-        raise Exception("Connection pool is not initialized.")
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+    return db
 
-def release_connection(conn):
-    if connection_pool and conn:
-        connection_pool.putconn(conn)
+@database_bp.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
-def close_all_connections():
-    if connection_pool:
-        connection_pool.closeall()  
+@database_bp.route('/')
+def index():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, name TEXT)')
+    return "Database connected and table created!"
