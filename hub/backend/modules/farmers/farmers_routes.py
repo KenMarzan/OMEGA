@@ -1,8 +1,10 @@
 from flask import Blueprint, request, jsonify
+from flask_cors import CORS
 from modules.farmers.farmers_model import get_farmers, get_farmer_by_id, add_farmer, get_farmer_by_user_id
 from modules.users.users_model import get_user_by_id 
 
 farmers_bp = Blueprint('farmers', __name__)
+CORS(farmers_bp)
 
 @farmers_bp.route('/', methods=['GET'])
 def list_farmers():

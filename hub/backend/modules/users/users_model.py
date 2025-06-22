@@ -1,7 +1,9 @@
+from werkzeug.security import generate_password_hash, check_password_hash
+
 USERS_DB = [
-    {"id": 1, "username": "customer1", "password_hash": "pass1", "role": "customer"},
-    {"id": 2, "username": "farmer1", "password_hash": "pass2", "role": "farmer"},
-    {"id": 3, "username": "gov1", "password_hash": "pass3", "role": "government"},
+    {"id": 1, "username": "customer1", "password_hash": generate_password_hash("pass1"), "role": "customer"},
+    {"id": 2, "username": "farmer1", "password_hash": generate_password_hash("pass2"), "role": "farmer"},
+    {"id": 3, "username": "gov1", "password_hash": generate_password_hash("pass3"), "role": "government"},
 ]
 next_user_id = len(USERS_DB) + 1 
 
