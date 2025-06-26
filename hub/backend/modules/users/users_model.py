@@ -1,24 +1,34 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-
-USERS_DB = [
-    {"id": 1, "username": "customer1", "password_hash": generate_password_hash("pass1"), "role": "customer"},
-    {"id": 2, "username": "farmer1", "password_hash": generate_password_hash("pass2"), "role": "farmer"},
-    {"id": 3, "username": "gov1", "password_hash": generate_password_hash("pass3"), "role": "government"},
-]
-next_user_id = len(USERS_DB) + 1 
+from database.db_connection import get_db
 
 def get_users():
-    return USERS_DB
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, username, password_hash, role FROM users')
+    rows = cursor.fetchall()
+    return [dict(row) for row in rows]
 
 def get_user_by_id(user_id):
-    return next((u for u in USERS_DB if u["id"] == user_id), None)
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, username, password_hash, role FROM users WHERE id = ?', (user_id,))
+    row = cursor.fetchone()
+    return dict(row) if row else None
 
 def get_user_by_username(username):
-    return next((u for u in USERS_DB if u["username"] == username), None)
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, username, password_hash, role FROM users WHERE username = ?', (username,))
+    row = cursor.fetchone()
+    return dict(row) if row else None
 
 def add_user(username, password_hash, role):
-    global next_user_id
-    new_user = {"id": next_user_id, "username": username, "password_hash": password_hash, "role": role}
-    USERS_DB.append(new_user)
-    next_user_id += 1
-    return new_user
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(
+        'INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)',
+        (username, password_hash, role)
+    )
+    db.commit()
+    user_id = cursor.lastrowid
+    return get_user_by_id(user_id)

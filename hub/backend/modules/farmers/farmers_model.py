@@ -1,21 +1,33 @@
-FARMERS_DB = [
-    {"id": 1, "user_id": 2, "farm_name": "Green Acres Farm", "location": "Sariaya, Quezon"},
-]
-
-next_farmer_id = len(FARMERS_DB) + 1
+from database.db_connection import get_db
 
 def get_farmers():
-    return FARMERS_DB
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, user_id, farm_name, location FROM farmers')
+    rows = cursor.fetchall()
+    return [dict(row) for row in rows]
 
 def get_farmer_by_id(farmer_id):
-    return next((f for f in FARMERS_DB if f["id"] == farmer_id), None)
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, user_id, farm_name, location FROM farmers WHERE id = ?', (farmer_id,))
+    row = cursor.fetchone()
+    return dict(row) if row else None
 
 def get_farmer_by_user_id(user_id):
-    return next((f for f in FARMERS_DB if f["user_id"] == user_id), None)
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT id, user_id, farm_name, location FROM farmers WHERE user_id = ?', (user_id,))
+    row = cursor.fetchone()
+    return dict(row) if row else None
 
 def add_farmer(user_id, farm_name, location):
-    global next_farmer_id
-    new_farmer = {"id": next_farmer_id, "user_id": user_id, "farm_name": farm_name, "location": location}
-    FARMERS_DB.append(new_farmer)
-    next_farmer_id += 1
-    return new_farmer
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(
+        'INSERT INTO farmers (user_id, farm_name, location) VALUES (?, ?, ?)',
+        (user_id, farm_name, location)
+    )
+    db.commit()
+    farmer_id = cursor.lastrowid
+    return get_farmer_by_id(farmer_id)

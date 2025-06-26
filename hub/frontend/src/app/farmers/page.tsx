@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { apiEndpoints, apiRequest } from "@/utils/api";
 
 interface Farmer {
   id: number;
@@ -16,7 +17,7 @@ export default function FarmersPage() {
   useEffect(() => {
     async function fetchFarmers() {
       try {
-        const res = await fetch("http://localhost:5000/farmers/");
+        const res = await apiRequest(apiEndpoints.farmers);
         if (!res.ok) throw new Error("Failed to fetch farmers");
         const data = await res.json();
         setFarmers(data);

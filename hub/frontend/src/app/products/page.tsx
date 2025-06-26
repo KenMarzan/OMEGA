@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { apiEndpoints, apiRequest } from "@/utils/api";
 
 interface Product {
   id: number;
@@ -18,7 +19,7 @@ export default function ProductsPage() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("http://localhost:5000/products/");
+        const res = await apiRequest(apiEndpoints.products);
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
         setProducts(data);

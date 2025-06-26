@@ -1,54 +1,119 @@
+"use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Navbar(): React.JSX.Element {
-  const [role, setRole] = useState<string | null>(null);
+  const { user, isLoggedIn, logout } = useAuth();
+  const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setRole(localStorage.getItem("role"));
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
+
+  const getNavigationLinks = () => {
+    const commonLinks = (
+      <>
+        <Link href="/AI_page" className="hover:text-[#006600] transition-colors">AI-assistant</Link>
+        <Link href="/Market_analysis" className="hover:text-[#006600] transition-colors">Market-analysis</Link>
+        <Link href="/News" className="hover:text-[#006600] transition-colors">News and Alert</Link>
+        <Link href="/Learning-Hub" className="hover:text-[#006600] transition-colors">Learning Hub</Link>
+      </>
+    );
+
+    switch (user?.role) {
+      case "farmer":
+        return (
+          <>
+            {commonLinks}
+            <Link href="/products" className="hover:text-[#006600] transition-colors">My Products</Link>
+            <Link href="/farmers" className="hover:text-[#006600] transition-colors">Farmers Network</Link>
+            <Link href="/orders" className="hover:text-[#006600] transition-colors">Orders</Link>
+          </>
+        );
+      
+      case "government":
+        return (
+          <>
+            {commonLinks}
+            <Link href="/government/dashboard" className="hover:text-[#006600] transition-colors">Dashboard</Link>
+            <Link href="/farmers" className="hover:text-[#006600] transition-colors">Farmers</Link>
+            <Link href="/products" className="hover:text-[#006600] transition-colors">All Products</Link>
+            <Link href="/orders" className="hover:text-[#006600] transition-colors">All Orders</Link>
+          </>
+        );
+      
+      case "customer":
+      default:
+        return (
+          <>
+            {commonLinks}
+            {isLoggedIn && (
+              <>
+                <Link href="/products" className="hover:text-[#006600] transition-colors">Browse Products</Link>
+                <Link href="/orders" className="hover:text-[#006600] transition-colors">My Orders</Link>
+              </>
+            )}
+          </>
+        );
     }
-  }, []);
+  };
 
   return (
-    <nav className=" flex flex-row justify-center items-center gap-20  h-20 border-b-0 shadow-blue-100">
+    <nav className="flex flex-row justify-between items-center px-8 h-20 border-b shadow-sm bg-white">
+      {/* Logo Section */}
       <div className="flex flex-row items-center gap-2">
-        <img
-          src="https://media.licdn.com/dms/image/v2/C4D03AQHKhXkwlry9UQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1655316407125?e=2147483647&v=beta&t=4BdyGzR_3Qf6O1fYauh552uPLqUhdQ94v5NFmq7HUI0"
-          alt=""
-          className="w-10 h-10 rounded-full"
-        />
-
-        <p className="text-[#008000] font-bold">AI-DE</p>
+        <Link href="/" className="flex items-center gap-2">
+          <img
+            src="https://media.licdn.com/dms/image/v2/C4D03AQHKhXkwlry9UQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1655316407125?e=2147483647&v=beta&t=4BdyGzR_3Qf6O1fYauh552uPLqUhdQ94v5NFmq7HUI0"
+            alt="AI-DE Logo"
+            className="w-10 h-10 rounded-full"
+          />
+          <p className="text-[#008000] font-bold text-xl">AI-DE</p>
+        </Link>
       </div>
 
-      <div className="flex gap-20">
-        <Link href="/AI_page">AI-assistant</Link>
+      {/* Navigation Links */}
+      <div className="flex gap-6 text-gray-700">
+        {getNavigationLinks()}
+      </div>
 
-        <Link href="/Market_analysis">Market-analysis</Link>
-
-        <Link href="/News">News and Alert</Link>
-
-        <Link href="/Learning-Hub">Learning Hub</Link>
-
-        {role === "farmer" && (
-          <>
-            <Link href="/products">Products</Link>
-
-            <Link href="/farmers">Farmers</Link>
-
-            <Link href="/orders">Orders</Link>
-          </>
+      {/* User Section */}
+      <div className="flex items-center gap-4">
+        {isLoggedIn && user ? (
+          <div className="flex items-center gap-4">
+            {/* User Info */}
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#008000] rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">
+                  {user.username.charAt(0).toUpperCase()}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-gray-800">{user.username}</span>
+                <span className="text-xs text-gray-500 capitalize">{user.role}</span>
+              </div>
+            </div>
+            
+            {/* Logout Button */}
+            <button 
+              onClick={handleLogout}
+              className="text-[#008000] hover:text-[#006600] font-medium transition-colors border border-[#008000] hover:border-[#006600] px-3 py-1 rounded"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex gap-4">
+            <Link href="/login" className="text-[#008000] hover:text-[#006600] font-medium transition-colors">
+              Login
+            </Link>
+            <Link href="/register" className="bg-[#008000] hover:bg-[#006600] text-white px-4 py-2 rounded font-medium transition-colors">
+              Register
+            </Link>
+          </div>
         )}
-      </div>
-      <div>
-        <Link href="/login" className="text-[#008000] font-bold">
-          Login
-        </Link>
-
-        <Link href="/register" className="ml-4 text-[#008000] font-bold">
-          Register
-        </Link>
       </div>
     </nav>
   );
