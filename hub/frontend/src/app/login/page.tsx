@@ -12,9 +12,12 @@ export default function LoginPage() {
   const router = useRouter();
   const { login } = useAuth();
 
+  console.log("LoginPage: Component rendered");
+
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    console.log("LoginPage: Attempting login with", { username });
     
     try {
       const res = await apiRequest(apiEndpoints.login, {
@@ -23,13 +26,18 @@ export default function LoginPage() {
       });
       const data = await res.json();
       
+      console.log("LoginPage: Login response", { ok: res.ok, data });
+      
       if (res.ok) {
         // Use the AuthContext login function
-        login({
+        const userData = {
           id: data.user?.id?.toString() || "1",
           username: data.user?.username || username,
           role: data.role || "customer",
-        });
+        };
+        
+        console.log("LoginPage: Logging in user", userData);
+        login(userData);
         
         // Redirect based on role
         if (data.role === "government") {
@@ -41,6 +49,7 @@ export default function LoginPage() {
         setError(data.error || "Login failed");
       }
     } catch (err) {
+      console.error("LoginPage: Login error", err);
       setError("Network error occurred");
     }
   }

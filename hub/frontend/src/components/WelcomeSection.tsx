@@ -57,7 +57,7 @@ export default function WelcomeSection() {
       case "customer":
       default:
         return {
-          title: `Hello, ${user.username}!`,
+          title: `Hello, ${user?.username ?? "User"}!`,
           subtitle: "Discover fresh products from local farmers",
           actions: [
             { label: "Browse Products", href: "/products", color: "bg-green-600" },

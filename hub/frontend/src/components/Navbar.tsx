@@ -7,6 +7,8 @@ export default function Navbar(): React.JSX.Element {
   const { user, isLoggedIn, logout } = useAuth();
   const router = useRouter();
 
+  console.log("Navbar: Render state", { user, isLoggedIn });
+
   const handleLogout = () => {
     logout();
     router.push("/");
@@ -79,7 +81,7 @@ export default function Navbar(): React.JSX.Element {
         {getNavigationLinks()}
       </div>
 
-      {/* User Section */}
+      {/* User Section - Always render login/register for testing */}
       <div className="flex items-center gap-4">
         {isLoggedIn && user ? (
           <div className="flex items-center gap-4">
@@ -106,14 +108,33 @@ export default function Navbar(): React.JSX.Element {
           </div>
         ) : (
           <div className="flex gap-4">
-            <Link href="/login" className="text-[#008000] hover:text-[#006600] font-medium transition-colors">
+            <Link 
+              href="/login" 
+              className="text-[#008000] hover:text-[#006600] font-medium transition-colors"
+              onClick={(e) => {
+                console.log("Login link clicked");
+                // Don't prevent default, let Next.js handle it
+              }}
+            >
               Login
             </Link>
-            <Link href="/register" className="bg-[#008000] hover:bg-[#006600] text-white px-4 py-2 rounded font-medium transition-colors">
+            <Link 
+              href="/register" 
+              className="bg-[#008000] hover:bg-[#006600] text-white px-4 py-2 rounded font-medium transition-colors"
+              onClick={(e) => {
+                console.log("Register link clicked");
+                // Don't prevent default, let Next.js handle it
+              }}
+            >
               Register
             </Link>
           </div>
         )}
+      </div>
+      
+      {/* Debug info */}
+      <div className="hidden">
+        <p>Debug: isLoggedIn={isLoggedIn.toString()}, user={JSON.stringify(user)}</p>
       </div>
     </nav>
   );

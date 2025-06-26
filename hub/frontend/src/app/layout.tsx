@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Quicksand } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import { AuthProvider } from "@/contexts/AuthContext";
+import ClientLayout from "../components/ClientLayout";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -36,14 +35,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${quicksand.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
-          </div>
-        </AuthProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

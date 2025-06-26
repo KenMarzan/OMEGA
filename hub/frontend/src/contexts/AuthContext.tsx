@@ -24,9 +24,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check localStorage on mount
     if (typeof window !== "undefined") {
+      console.log("AuthContext: Checking localStorage...");
       const storedRole = localStorage.getItem("role");
       const storedUsername = localStorage.getItem("username");
       const storedUserId = localStorage.getItem("userId");
+
+      console.log("AuthContext: Stored data", { storedRole, storedUsername, storedUserId });
 
       if (storedRole && storedUsername && storedUserId) {
         setUser({
@@ -35,6 +38,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: storedRole,
         });
         setIsLoggedIn(true);
+        console.log("AuthContext: User logged in from localStorage");
+      } else {
+        console.log("AuthContext: No valid stored data, user not logged in");
       }
     }
   }, []);
