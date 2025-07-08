@@ -149,7 +149,7 @@ export default function AI_page(): React.JSX.Element {
 
           {/* Quick Stats */}
           <div className="mt-6 bg-green-50 rounded-lg p-4">
-            <h3 className="font-semibold text-green-800 mb-3">Today's Insights</h3>
+            <h3 className="font-semibold text-green-800 mb-3">Today&apos;s Insights</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-600">Weather Score:</span>
