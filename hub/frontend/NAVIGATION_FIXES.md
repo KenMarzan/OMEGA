@@ -52,7 +52,7 @@ src/
     └── AuthContext.tsx (updated - debugging added)
 ```
 
-### Key Code Changes:
+### Key Code Changes: 
 
 #### 1. **layout.tsx** (Server Component)
 ```tsx

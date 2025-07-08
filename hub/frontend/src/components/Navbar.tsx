@@ -68,7 +68,7 @@ export default function Navbar(): React.JSX.Element {
       <div className="flex flex-row items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <img
-            src="https://media.licdn.com/dms/image/v2/C4D03AQHKhXkwlry9UQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1655316407125?e=2147483647&v=beta&t=4BdyGzR_3Qf6O1fYauh552uPLqUhdQ94v5NFmq7HUI0"
+            src="/logo.svg"
             alt="AI-DE Logo"
             className="w-10 h-10 rounded-full"
           />

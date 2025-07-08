@@ -29,7 +29,6 @@ export default function LoginPage() {
       console.log("LoginPage: Login response", { ok: res.ok, data });
       
       if (res.ok) {
-        // Use the AuthContext login function
         const userData = {
           id: data.user?.id?.toString() || "1",
           username: data.user?.username || username,
@@ -39,7 +38,6 @@ export default function LoginPage() {
         console.log("LoginPage: Logging in user", userData);
         login(userData);
         
-        // Redirect based on role
         if (data.role === "government") {
           router.push("/government/dashboard");
         } else {

@@ -19,19 +19,29 @@ export default function AI_assistant(): React.JSX.Element {
         <div className="h-[60vh] flex flex-row justify-between  w-full">
           <div className="w-1/2  flex justify-center items-center flex-col">
             <div className="p-20">
-              <h1 className="text-[#008000] text-2xl font-bold">
+              <div className="mb-4">
+                <span className="bg-green-100 text-[#008000] px-3 py-1 rounded-full text-sm font-medium">
+                  AI-DE: Smart Agriculture
+                </span>
+              </div>
+              <h1 className="text-[#008000] text-2xl font-bold mb-2">
                 Cultivating Life, Harvest by Harvest.
               </h1>
-              <h1 className=" text-[#1e1f1ed3] font-black text-6xl mb-6">
+              <h1 className=" text-[#1e1f1ed3] font-black text-6xl mb-4">
                 Rooted in Tradition, Growing the Future
               </h1>
+              <div className="mb-6">
+                <p className="text-[#008000] text-xl font-semibold italic">
+                  "Where Artificial Intelligence Meets Agricultural Excellence"
+                </p>
+              </div>
 
-              <p className="font-quicksand">
+              <p className="font-quicksand text-gray-700">
                 From the fertile soil to your table, we honor time-tested wisdom
-                while embracing innovation. Our commitment to sustainable
-                practices ensures bountiful harvests and a healthier planet for
-                generations to come. Join us in cultivating a legacy of quality
-                and care.
+                while embracing innovation. Our AI-powered platform connects farmers,
+                customers, and government officials, ensuring sustainable practices,
+                bountiful harvests, and a healthier planet for generations to come.
+                Join us in cultivating a legacy of quality and care.
               </p>
             </div>
 
@@ -46,20 +56,21 @@ export default function AI_assistant(): React.JSX.Element {
           </div>
 
           <div className="w-1/2 flex items-center justify-center relative">
-            <div className="w-56 h-20 bg-white shadow-md rounded-2xl p-4 absolute top-3/12 left-26">
-              <p>Masarap at mura</p>
-              <p className="font-bold">Cheap and affordable</p>
+            {/* AI-Powered Insights Card */}
+            <div className="w-64 h-24 bg-white shadow-lg rounded-2xl p-4 absolute top-3/12 left-20 border-l-4 border-green-500">
+              <p className="text-sm text-gray-600">🤖 AI Insights</p>
+              <p className="font-bold text-green-700">Smart crop predictions increased my yield by 35%!</p>
             </div>
 
-            <div className="w-56 h-20 bg-white shadow-md rounded-2xl p-4 absolute top-5/12 right-16">
-              <p>Masarap at mura</p>
-              <p className="font-bold">Cheap and affordable</p>
+            {/* Farmer Testimonial Card */}
+            <div className="w-64 h-24 bg-white shadow-lg rounded-2xl p-4 absolute top-5/12 right-16 border-l-4 border-blue-500">
+              <p className="text-sm text-gray-600">👨‍🌾 Farmer John M.</p>
+              <p className="font-bold text-blue-700">Fresh produce, direct from farm to your table!</p>
             </div>
 
-            <div className="w-20 h-20 bg-white shadow-md rounded-full p-4 absolute top-8/12 right-32 m-auto">
-              <h1>
-                <i className="bi bi-telephone-forward-fill">P</i>
-              </h1>
+            {/* Connection Icon */}
+            <div className="w-20 h-20 bg-green-100 shadow-md rounded-full p-4 absolute top-8/12 right-32 m-auto flex items-center justify-center">
+              <span className="text-green-600 text-2xl">🌾</span>
             </div>
 
             <div className="w-80 h-0 mt-[-100px] rounded-2xl p-4 absolute top-0  rotate-0 ">
