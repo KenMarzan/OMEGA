@@ -11,7 +11,6 @@ import { tabs, urgentAlerts, newsArticles, weatherUpdates } from '@/data/newsDat
 
 export default function NewsAlertPage() {
   const [activeTab, setActiveTab] = useState('all');
-  const [selectedAlert, setSelectedAlert] = useState(null);
 
   const filteredContent = () => {
     if (activeTab === 'all') {

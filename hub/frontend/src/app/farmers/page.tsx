@@ -21,8 +21,9 @@ export default function FarmersPage() {
         if (!res.ok) throw new Error("Failed to fetch farmers");
         const data = await res.json();
         setFarmers(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }

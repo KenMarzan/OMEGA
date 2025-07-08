@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import Image from "next/image";
 
 export default function AI_assistant(): React.JSX.Element {
   const tutorial: MouseEventHandler = (
@@ -32,7 +33,7 @@ export default function AI_assistant(): React.JSX.Element {
               </h1>
               <div className="mb-6">
                 <p className="text-[#008000] text-xl font-semibold italic">
-                  "Where Artificial Intelligence Meets Agricultural Excellence"
+                  &quot;Where Artificial Intelligence Meets Agricultural Excellence&quot;
                 </p>
               </div>
 
@@ -74,16 +75,18 @@ export default function AI_assistant(): React.JSX.Element {
             </div>
 
             <div className="w-80 h-0 mt-[-100px] rounded-2xl p-4 absolute top-0  rotate-0 ">
-              <img src="/bunny.png" alt="" />
+              <Image src="/bunny.png" alt="" width={320} height={144} />
             </div>
             <div className="w-80 h-36 rounded-2xl p-4 absolute top-3/12 right-5 rotate-140 ">
-              <img src="/arrow.png" alt="" />
+              <Image src="/arrow.png" alt="" width={320} height={144} />
             </div>
 
-            <img
+            <Image
               src="/farmer.jpg"
               alt=""
               className="w-[500px]  h-[400px]"
+              width={500}
+              height={400}
             />
           </div>
         </div>

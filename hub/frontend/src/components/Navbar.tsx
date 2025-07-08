@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import Image from "next/image";
 
 export default function Navbar(): React.JSX.Element {
   const { user, isLoggedIn, logout } = useAuth();
@@ -67,10 +68,12 @@ export default function Navbar(): React.JSX.Element {
       {/* Logo Section */}
       <div className="flex flex-row items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
-          <img
+          <Image
             src="/logo.svg"
             alt="AI-DE Logo"
             className="w-10 h-10 rounded-full"
+            width={40}
+            height={40}
           />
           <p className="text-[#008000] font-bold text-xl">AI-DE</p>
         </Link>
@@ -111,7 +114,7 @@ export default function Navbar(): React.JSX.Element {
             <Link 
               href="/login" 
               className="text-[#008000] hover:text-[#006600] font-medium transition-colors"
-              onClick={(e) => {
+              onClick={() => {
                 console.log("Login link clicked");
                 // Don't prevent default, let Next.js handle it
               }}
@@ -121,7 +124,7 @@ export default function Navbar(): React.JSX.Element {
             <Link 
               href="/register" 
               className="bg-[#008000] hover:bg-[#006600] text-white px-4 py-2 rounded font-medium transition-colors"
-              onClick={(e) => {
+              onClick={() => {
                 console.log("Register link clicked");
                 // Don't prevent default, let Next.js handle it
               }}

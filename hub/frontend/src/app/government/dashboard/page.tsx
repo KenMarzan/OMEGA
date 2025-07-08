@@ -36,7 +36,7 @@ function DashboardContent() {
           const errorData = await response.json();
           setError(errorData.error || "Failed to fetch dashboard data");
         }
-      } catch (err) {
+      } catch {
         setError("Network error occurred");
       } finally {
         setLoading(false);

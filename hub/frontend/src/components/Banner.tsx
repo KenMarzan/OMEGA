@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function FarmersBanner() {
   const imageUrl =
@@ -8,10 +9,12 @@ export default function FarmersBanner() {
   return (
     <div className="relative w-full overflow-hidden rounded-md p-20 ">
       <div className="relative w-full h-auto min-h-[250px] flex items-center p-0 lg:min-h-[300px] rounded-md ">
-        <img
+        <Image
           src={imageUrl}
           alt="Farmers and community members celebrating a successful agricultural initiative"
           className="absolute inset-0 w-full h-full object-cover object-right z-0"
+          fill
+          sizes="100vw"
         />
 
         <div
