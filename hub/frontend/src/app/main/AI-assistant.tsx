@@ -14,9 +14,9 @@ export default function AI_assistant(): React.JSX.Element {
   };
 
   return (
-    <div className=" h-screen flex flex-col justify-between  w-full">
+    <div className="flex flex-col w-full">
       <div>
-        <div className="h-[60vh] flex flex-row justify-between  w-full">
+        <div className="min-h-[60vh] flex flex-row justify-between w-full">
           <div className="w-1/2  flex justify-center items-center flex-col">
             <div className="p-20">
               <div className="mb-4">
@@ -56,7 +56,7 @@ export default function AI_assistant(): React.JSX.Element {
           </div>
 
           <div className="w-1/2 flex items-center justify-center relative">
-            {/* AI-Powered Insights Card */}
+                      {/* AI-Powered Insights Card */}
             <div className="w-64 h-24 bg-white shadow-lg rounded-2xl p-4 absolute top-3/12 left-20 border-l-4 border-green-500">
               <p className="text-sm text-gray-600">🤖 AI Insights</p>
               <p className="font-bold text-green-700">Smart crop predictions increased my yield by 35%!</p>
@@ -81,14 +81,14 @@ export default function AI_assistant(): React.JSX.Element {
             </div>
 
             <img
-              src="https://media.licdn.com/dms/image/v2/C4D03AQHKhXkwlry9UQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1655316407125?e=2147483647&v=beta&t=4BdyGzR_3Qf6O1fYauh552uPLqUhdQ94v5NFmq7HUI0"
+              src="/farmer.jpg"
               alt=""
               className="w-[500px]  h-[400px]"
             />
           </div>
         </div>
 
-        <div className="bg-white shadow-md flex flex-row h-32 items-center justify-center m-20 rounded-md">
+        <div className="bg-white shadow-md flex flex-row h-32 items-center justify-center mx-20 my-8 rounded-md">
           <div className="border-r-1 flex items-center justify-center flex-col w-1/3 h-[80px]">
             <h1 className="text-[#008000] text-2xl font-bold">500+</h1>
             <h1>Acres Cultivated</h1>
