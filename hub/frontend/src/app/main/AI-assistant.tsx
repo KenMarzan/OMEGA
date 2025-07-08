@@ -74,9 +74,6 @@ export default function AI_assistant(): React.JSX.Element {
               <span className="text-green-600 text-2xl">🌾</span>
             </div>
 
-            <div className="w-80 h-0 mt-[-100px] rounded-2xl p-4 absolute top-0  rotate-0 ">
-              <Image src="/bunny.png" alt="" width={320} height={144} />
-            </div>
             <div className="w-80 h-36 rounded-2xl p-4 absolute top-3/12 right-5 rotate-140 ">
               <Image src="/arrow.png" alt="" width={320} height={144} />
             </div>
