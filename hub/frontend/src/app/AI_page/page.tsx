@@ -20,7 +20,7 @@ export default function AI_page(): React.JSX.Element {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! I'm your AI agricultural assistant. How can I help you optimize your farming today?",
+      text: "Hello! I&apos;m your AI agricultural assistant. How can I help you optimize your farming today?",
       sender: 'ai',
       timestamp: new Date()
     }
@@ -48,14 +48,14 @@ export default function AI_page(): React.JSX.Element {
       title: 'Pest Detection',
       description: 'Identify and manage pest problems',
       icon: '🐛',
-      action: () => handleAIResponse('I can help you identify common pests. Can you describe what you\'re seeing on your crops?')
+      action: () => handleAIResponse('I can help you identify common pests. Can you describe what you&apos;re seeing on your crops?')
     },
     {
       id: 'soil-health',
       title: 'Soil Health',
       description: 'Monitor and improve soil conditions',
       icon: '🌍',
-      action: () => handleAIResponse('Soil health is crucial for good yields. What\'s your current soil testing results?')
+      action: () => handleAIResponse('Soil health is crucial for good yields. What&apos;s your current soil testing results?')
     }
   ];
 
@@ -77,7 +77,7 @@ export default function AI_page(): React.JSX.Element {
     setTimeout(() => {
       const aiResponse: Message = {
         id: Date.now() + 1,
-        text: generateAIResponse(inputMessage),
+        text: generateAIResponse(),
         sender: 'ai',
         timestamp: new Date()
       };
@@ -100,10 +100,10 @@ export default function AI_page(): React.JSX.Element {
     }, 1000);
   };
 
-  const generateAIResponse = (userMessage: string): string => {
+  const generateAIResponse = (): string => {
     const responses = [
       "Based on your input, I recommend checking your soil moisture levels and adjusting irrigation accordingly.",
-      "That's a great question! For optimal crop growth, consider the seasonal patterns and local climate conditions.",
+      "That&apos;s a great question! For optimal crop growth, consider the seasonal patterns and local climate conditions.",
       "I suggest consulting with local agricultural experts and monitoring weather forecasts for the next week.",
       "Your farming approach sounds solid. Here are some additional tips to maximize your yield...",
       "Let me analyze that for you. Consider factors like soil pH, nutrient levels, and pest management strategies."
@@ -238,7 +238,7 @@ export default function AI_page(): React.JSX.Element {
             <h3 className="text-lg font-semibold text-gray-800 mb-3">Quick Questions</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                "What's the best time to plant tomatoes?",
+                "What&apos;s the best time to plant tomatoes?",
                 "How do I improve soil fertility?",
                 "Signs of nutrient deficiency in crops?",
                 "Organic pest control methods?"
