@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Main from "./Main/page";
+import Main from "./main/page";
 import Footer from "@/components/Footer";
 
 export default function MainPage(): React.JSX.Element {
