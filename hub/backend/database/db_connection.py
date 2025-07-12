@@ -4,7 +4,11 @@ import os
 
 database_bp = Blueprint('database', __name__)
 
-DATABASE = os.path.join(os.path.dirname(__file__), 'database.db')
+# For production/Vercel, use /tmp directory for SQLite database
+if os.environ.get('FLASK_CONFIG') == 'production':
+    DATABASE = '/tmp/database.db'
+else:
+    DATABASE = os.path.join(os.path.dirname(__file__), 'database.db')
 
 def get_db():
     db = getattr(g, '_database', None)

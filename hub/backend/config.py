@@ -12,8 +12,11 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('PROD_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('PROD_DATABASE_URL') or 'sqlite:///production.db'
     LOG_LEVEL = 'WARNING'
+    # For Vercel deployment, we'll use SQLite in /tmp directory
+    if not os.environ.get('PROD_DATABASE_URL'):
+        SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/production.db'
 
 config_by_name = {
     'development': DevelopmentConfig,

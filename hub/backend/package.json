@@ -1,0 +1,15 @@
+{
+  "name": "agritech-backend",
+  "version": "1.0.0",
+  "description": "AgriTech Philippines Backend API",
+  "main": "api/index.py",
+  "scripts": {
+    "start": "python api/index.py"
+  },
+  "engines": {
+    "python": "3.9.x"
+  },
+  "keywords": ["agriculture", "ai", "flask", "api"],
+  "author": "AgriTech Philippines",
+  "license": "MIT"
+}
