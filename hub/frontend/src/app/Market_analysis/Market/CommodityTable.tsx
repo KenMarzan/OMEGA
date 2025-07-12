@@ -23,7 +23,12 @@ interface CommodityTableProps {
   getTrendIcon: (trend: string) => string;
 }
 
-export default function CommodityTable({ commodities, marketData, getChangeColor, getTrendIcon }: CommodityTableProps) {
+export default function CommodityTable({
+  commodities,
+  marketData,
+  getChangeColor,
+  getTrendIcon,
+}: CommodityTableProps) {
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-bold mb-4">📋 All Commodities Overview</h2>
@@ -58,24 +63,34 @@ export default function CommodityTable({ commodities, marketData, getChangeColor
                       <div className="flex items-center">
                         <span className="text-2xl mr-3">{commodity.icon}</span>
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{commodity.name}</div>
-                          <div className="text-sm text-gray-500">{commodity.symbol}</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {commodity.name}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {commodity.symbol}
+                          </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">${data.currentPrice}</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        ${data.currentPrice}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className={`text-sm ${getChangeColor(data.change)}`}>
-                        {data.change >= 0 ? '+' : ''}${data.change} ({data.change >= 0 ? '+' : ''}{data.changePercent}%)
+                        {data.change >= 0 ? "+" : ""}${data.change} (
+                        {data.change >= 0 ? "+" : ""}
+                        {data.changePercent}%)
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {data.volume}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-lg">{getTrendIcon(data.trend)}</span>
+                      <span className="text-lg">
+                        {getTrendIcon(data.trend)}
+                      </span>
                     </td>
                   </tr>
                 );

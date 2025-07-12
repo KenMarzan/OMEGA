@@ -43,7 +43,13 @@ function Card({ imageSrc, title, location, origin, price }: CardProps) {
   return (
     <div className="w-56 shadow-md h-64 flex flex-col rounded-lg overflow-hidden border border-gray-200">
       <div className="relative w-full h-1/2">
-        <Image src={imageSrc} alt={title} className="object-cover" fill sizes="(max-width: 768px) 100vw, 224px" />
+        <Image
+          src={imageSrc}
+          alt={title}
+          className="object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, 224px"
+        />
       </div>
 
       <div className="p-3 flex-grow flex flex-col justify-between">
