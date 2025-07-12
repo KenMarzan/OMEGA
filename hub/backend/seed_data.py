@@ -25,10 +25,10 @@ def seed_database():
         
         # Insert test users
         users_data = [
-            ('john_customer', generate_password_hash('password123'), 'customer'),
-            ('jane_farmer', generate_password_hash('password123'), 'farmer'),
-            ('bob_gov', generate_password_hash('password123'), 'government'),
-            ('alice_farmer', generate_password_hash('password123'), 'farmer'),
+            ('juan_customer', generate_password_hash('password123'), 'customer'),
+            ('maria_farmer', generate_password_hash('password123'), 'farmer'),
+            ('carlos_gov', generate_password_hash('password123'), 'government'),
+            ('ana_farmer', generate_password_hash('password123'), 'farmer'),
         ]
         
         cursor.executemany(
@@ -42,8 +42,8 @@ def seed_database():
         
         # Insert farmers
         farmers_data = [
-            (users['jane_farmer'], 'Green Valley Farm', 'Nairobi County'),
-            (users['alice_farmer'], 'Sunrise Organic Farm', 'Kiambu County'),
+            (users['maria_farmer'], 'Bukid ng Pag-asa Farm', 'Nueva Ecija'),
+            (users['ana_farmer'], 'Masaganang Ani Organic Farm', 'Laguna'),
         ]
         
         cursor.executemany(
@@ -57,10 +57,10 @@ def seed_database():
         
         # Insert products
         products_data = [
-            (farmers[users['jane_farmer']], 'Organic Tomatoes', 'Fresh red tomatoes from the farm', 120.00, 50),
-            (farmers[users['jane_farmer']], 'Free-Range Eggs', 'Dozen brown eggs from happy chickens', 90.00, 30),
-            (farmers[users['alice_farmer']], 'Sweet Potatoes', 'Organic sweet potatoes', 80.00, 25),
-            (farmers[users['alice_farmer']], 'Spinach', 'Fresh leafy greens', 60.00, 40),
+            (farmers[users['maria_farmer']], 'Organic Rice (Jasmine)', 'Premium organic jasmine rice from Nueva Ecija', 55.00, 100),
+            (farmers[users['maria_farmer']], 'Fresh Corn (White)', 'Sweet white corn kernels freshly harvested', 25.00, 80),
+            (farmers[users['ana_farmer']], 'Organic Coconuts', 'Fresh coconuts from Laguna plantations', 15.00, 60),
+            (farmers[users['ana_farmer']], 'Ripe Bananas (Saba)', 'Premium Saba bananas ready to eat', 35.00, 40),
         ]
         
         cursor.executemany(
@@ -74,7 +74,7 @@ def seed_database():
         
         # Insert government officials
         gov_data = [
-            (users['bob_gov'], 'Department of Agriculture'),
+            (users['carlos_gov'], 'Department of Agriculture - Philippines'),
         ]
         
         cursor.executemany(
@@ -84,8 +84,8 @@ def seed_database():
         
         # Insert sample orders
         orders_data = [
-            (users['john_customer'], products['Organic Tomatoes'], 2, 'pending'),
-            (users['john_customer'], products['Free-Range Eggs'], 1, 'completed'),
+            (users['juan_customer'], products['Organic Rice (Jasmine)'], 2, 'pending'),
+            (users['juan_customer'], products['Ripe Bananas (Saba)'], 1, 'completed'),
         ]
         
         cursor.executemany(

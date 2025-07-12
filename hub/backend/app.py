@@ -21,12 +21,14 @@ def create_app(config_name=None):
     from modules.users.users_routes import users_bp
     from modules.orders.orders_routes import orders_bp
     from modules.government.government_routes import government_bp
+    from modules.AI.AI_routes import AI_bp
 
     app.register_blueprint(farmers_bp, url_prefix='/farmers')
     app.register_blueprint(products_bp, url_prefix='/products')
     app.register_blueprint(users_bp, url_prefix='/users')
     app.register_blueprint(orders_bp, url_prefix='/orders')
     app.register_blueprint(government_bp, url_prefix='/government')
+    app.register_blueprint(AI_bp, url_prefix='/ai')
 
     @app.route('/')
     def index():
