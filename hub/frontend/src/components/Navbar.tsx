@@ -37,13 +37,6 @@ export default function Navbar(): React.JSX.Element {
           AI-assistant
         </Link>
         <Link
-          href="/Market_analysis"
-          className="hover:text-[#006600] transition-colors block py-2 md:py-0"
-          onClick={closeMobileMenu}
-        >
-          Market-analysis
-        </Link>
-        <Link
           href="/News"
           className="hover:text-[#006600] transition-colors block py-2 md:py-0"
           onClick={closeMobileMenu}

@@ -77,7 +77,7 @@ export const newsArticles = [
     publishedAt: "2025-07-08T07:30:00Z",
     readTime: "7 min read",
     image: "📊",
-    tags: ["Market Analysis", "Food Prices", "Global Trade"],
+    tags: ["Economics", "Food Prices", "Global Trade"],
     likes: 278,
     shares: 156,
   },

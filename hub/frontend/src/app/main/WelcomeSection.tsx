@@ -61,14 +61,14 @@ export default function WelcomeSection() {
                   desc: "Smart farming advice",
                 },
                 {
-                  icon: "📊",
-                  label: "Market Analysis",
-                  desc: "Real-time insights",
-                },
-                {
                   icon: "🌱",
                   label: "Crop Management",
                   desc: "Optimize yields",
+                },
+                {
+                  icon: "📰",
+                  label: "Latest News",
+                  desc: "Stay informed",
                 },
                 { icon: "📱", label: "Mobile Ready", desc: "Access anywhere" },
               ].map((feature, index) => (
@@ -225,11 +225,11 @@ export default function WelcomeSection() {
               description: "Monitor farmer activities",
             },
             {
-              label: "Market Analysis",
-              href: "/Market_analysis",
+              label: "Latest News",
+              href: "/News",
               color: "bg-purple-600 hover:bg-purple-700",
-              icon: "📈",
-              description: "Analyze market trends",
+              icon: "�",
+              description: "Stay updated with news",
             },
           ],
         };
@@ -257,11 +257,11 @@ export default function WelcomeSection() {
               description: "Track your purchases",
             },
             {
-              label: "Market Analysis",
-              href: "/Market_analysis",
+              label: "Learning Hub",
+              href: "/Learning-Hub",
               color: "bg-purple-600 hover:bg-purple-700",
-              icon: "📊",
-              description: "View market insights",
+              icon: "�",
+              description: "Educational resources",
             },
           ],
         };
