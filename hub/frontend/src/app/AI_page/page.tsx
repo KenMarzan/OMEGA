@@ -1,11 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  sendChatMessage,
-  getCropAnalysis,
-  getWeatherAdvice,
-  getPestIdentification,
-} from "../../utils/api";
+import { sendChatMessage } from "../../utils/api";
 
 interface Message {
   id: number;
@@ -37,11 +32,8 @@ export default function AI_page(): React.JSX.Element {
     "english" | "tagalog"
   >("english");
 
-  // Function to handle language change
   const handleLanguageChange = (language: "english" | "tagalog") => {
     setSelectedLanguage(language);
-
-    // Update the welcome message based on language
     const welcomeMessage =
       language === "tagalog"
         ? "Kumusta! Ako ang inyong AI agricultural assistant na powered ng advanced AI. Paano ko kayo matutulungan na ma-optimize ang inyong farming ngayon?"
@@ -55,6 +47,18 @@ export default function AI_page(): React.JSX.Element {
         timestamp: new Date(),
       },
     ]);
+  };
+
+  const handleAIToolResponse = (toolType: string, responseText: string) => {
+    setIsTyping(true);
+    const aiResponse: Message = {
+      id: Date.now(),
+      text: responseText,
+      sender: "ai",
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, aiResponse]);
+    setIsTyping(false);
   };
 
   const aiTools: AITool[] = [
@@ -147,22 +151,6 @@ export default function AI_page(): React.JSX.Element {
     }
   };
 
-  const handleAIToolResponse = (toolType: string, responseText: string) => {
-    setIsTyping(true);
-    const aiResponse: Message = {
-      id: Date.now(),
-      text: responseText,
-      sender: "ai",
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, aiResponse]);
-    setIsTyping(false);
-  };
-
-  const handleAIResponse = (responseText: string) => {
-    handleAIToolResponse("general", responseText);
-  };
-
   const handleQuickQuestion = async (question: string) => {
     setInputMessage(question);
 
@@ -223,7 +211,6 @@ export default function AI_page(): React.JSX.Element {
           operations
         </p>
 
-        {/* Language Selector */}
         <div className="mt-4 flex items-center space-x-4">
           <span className="text-gray-700 font-medium">Language:</span>
           <div className="flex space-x-2">
@@ -252,7 +239,6 @@ export default function AI_page(): React.JSX.Element {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* AI Tools Section */}
         <div className="lg:col-span-1">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             AI Tools
@@ -279,7 +265,6 @@ export default function AI_page(): React.JSX.Element {
             ))}
           </div>
 
-          {/* Quick Stats */}
           <div className="mt-6 bg-green-50 rounded-lg p-4">
             <h3 className="font-semibold text-green-800 mb-3">
               Today&apos;s Insights
@@ -301,10 +286,8 @@ export default function AI_page(): React.JSX.Element {
           </div>
         </div>
 
-        {/* Chat Interface */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-lg shadow-md h-96 flex flex-col">
-            {/* Chat Header */}
             <div className="bg-green-600 text-white p-4 rounded-t-lg">
               <h2 className="text-xl font-semibold">Chat with AI Assistant</h2>
               <p className="text-green-100 text-sm">
@@ -312,7 +295,6 @@ export default function AI_page(): React.JSX.Element {
               </p>
             </div>
 
-            {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((message) => (
                 <div
@@ -360,7 +342,6 @@ export default function AI_page(): React.JSX.Element {
               )}
             </div>
 
-            {/* Input Area */}
             <div className="border-t border-gray-200 p-4">
               <div className="flex space-x-2">
                 <input
@@ -382,7 +363,6 @@ export default function AI_page(): React.JSX.Element {
             </div>
           </div>
 
-          {/* Quick Suggestions */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
               Quick Questions
